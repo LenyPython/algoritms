@@ -3,19 +3,36 @@ from random import randint
 
 
 # test cases
-smallList = [randint(0,10000) for _ in range(100)]
-mediumList = [randint(0,10000) for _ in range(5000)]
-bigList = [randint(0,10000) for _ in range(10000)]
-testcases = {'small': smallList, 'medium': mediumList, 'big': bigList}
+testcases = {
+			'small': [randint(0,10000) for _ in range(10000)],
+			'medium': [randint(0,10000) for _ in range(5000)],
+			'big': [randint(0,10000) for _ in range(100)]
+			}
 
 # test function
-def test(tests):
-	print('Running tests ...')
-	for key,item in tests.items():
-		sortedCase = insertSort(item)
-		result = all(sortedCase[i] <= sortedCase[i + 1] for i in range(len(sortedCase) - 1))
-		print(f'Test case: {key}, result for insertSort: {result}')	
+def checkIfSorted(arr):
+	return all(arr[i] <= arr[i + 1] for i in range(len(arr) - 1))
 
+
+def test(tests, *funcs):
+	for func in funcs:
+		print('Running tests ...')
+		for key, case in tests.items():
+			sortedArray = func(case)
+			result = checkIfSorted(sortedArray)
+			print(f'Test case: {key}, result for insertSort: {result}')	
+
+#select sort
+def selectSortMin(arr):
+	for i in range(len(arr)):
+		index = arr.index(min(arr[i:]))
+		arr[i], arr[index] = arr[index], arr[i]
+	return arr
+def selectSortMax(arr):
+	for i in range(0, len(arr), -1):
+		index = arr.index(max(arri[:i]))
+		arr[i], arr[index] = arr[index], arr[i]
+	return arr
 
 # insert sort
 def insertSort(arr):
@@ -33,4 +50,4 @@ def insertSort(arr):
 # heep sort
 
 if __name__ == '__main__':
-	test(testcases)
+	test(testcases, selectSortMin, selectSortMax, insertSort)
