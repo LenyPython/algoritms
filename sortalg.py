@@ -4,9 +4,9 @@ from random import randint
 
 # test cases
 testcases = {
-			'small': [randint(0,10000) for _ in range(10000)],
-			'medium': [randint(0,10000) for _ in range(5000)],
-			'big': [randint(0,10000) for _ in range(100)]
+			'1.small': [randint(0,10000) for _ in range(10000)],
+			'2.medium': [randint(0,10000) for _ in range(5000)],
+			'3.big': [randint(0,10000) for _ in range(100)]
 			}
 
 # test function
@@ -16,22 +16,20 @@ def checkIfSorted(arr):
 
 def test(tests, *funcs):
 	for func in funcs:
-		print('Running tests ...')
+		print(f'Running tests for: {func.__name__}\n')
 		for key, case in tests.items():
 			sortedArray = func(case)
 			result = checkIfSorted(sortedArray)
-			print(f'Test case: {key}, result for insertSort: {result}')	
+			print(f'Test case: {key}, result: {result}')
+		print('...................................\n')
 
 #select sort
 def selectSortMin(arr):
-	for i in range(len(arr)):
-		index = arr.index(min(arr[i:]))
-		arr[i], arr[index] = arr[index], arr[i]
+	
 	return arr
+
 def selectSortMax(arr):
-	for i in range(0, len(arr), -1):
-		index = arr.index(max(arri[:i]))
-		arr[i], arr[index] = arr[index], arr[i]
+
 	return arr
 
 # insert sort
