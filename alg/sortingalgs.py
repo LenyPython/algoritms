@@ -9,7 +9,14 @@ def selectSortMin(arr):
 	return arr
 
 def selectSortMax(arr):
-
+	print(arr)
+	for i in range(-1, -len(arr), -1):
+		m = max(arr[:i])
+		push = arr[i]
+		arr[arr.index(m)] = push
+		arr[i] = m
+		print(f'index: {i}, max: {m}, sub: {arr[:i]}, array: {arr})')
+	print(arr)
 	return arr
 
 # insert sort
