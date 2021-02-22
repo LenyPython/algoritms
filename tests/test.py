@@ -10,9 +10,9 @@ def test(*args):
 	#	testcase = input('Choose test size: 0, 1, 2, 3')
 	TESTS = {
 			'0.tiny': [randint(0,19) for _ in range(10)],
-			#'1.small': [randint(0, 200) for _ in range(100)],
-			#'2.medium': [randint(0,10000) for _ in range(5000)],
-			#'3.big': [randint(0,10000) for _ in range(10000)]
+			'1.small': [randint(0, 200) for _ in range(100)],
+			'2.medium': [randint(0,10000) for _ in range(5000)],
+			'3.big': [randint(0,10000) for _ in range(10000)]
 			}
 	for func in args:
 		print(f'Running tests for: {func.__name__}\n')
