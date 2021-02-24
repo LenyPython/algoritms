@@ -28,6 +28,5 @@ def insertSort(arr):
 			i -= 1
 	return arr
 
-#merge sort
+# merge sort
 
-# heep sort
