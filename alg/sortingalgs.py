@@ -28,5 +28,17 @@ def insertSort(arr):
 			i -= 1
 	return arr
 
+# bubble sort
+def bubbleSort(arr):
+	n = len(arr)
+	for i in range(n):
+		isSorted = True
+		for j in range(n - i - 1):
+			if arr[j] > arr[j + 1]:
+				arr[j],arr[j + 1] = arr[j + 1], arr[j]
+				isSorted = False
+		if isSorted: break
+	return arr
+
 # merge sort
 

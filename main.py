@@ -1,18 +1,21 @@
 from tests.test import test, checkIfSorted
+from alg.sortingalgs import *
 
+# main I/O function for running specific tests
 def main():
 	while True:
 		print('Sorting algoritm tester')
 		algoritm = input('Choose a sorting algoritm/s (for all write all):')
-		test = input('which test would you like to run?\n
+		case = input('which test would you like to run?\n \
 			(tiny, small, medium, big, all)')
-
+		
+		# run test function with chosen allgorithms
 		test()
-		continue = input('Would you like to take another test? y/n')
-		if continue != 'y' and continue != 'n':
-			continue = input('Wrong input, continue? y/n')
-		if continue == 'n': break
+		run = input('Would you like to take another test? y/n')
+		if run != 'y' and run != 'n':
+			run = input('Wrong input, run? y/n')
+		if run == 'n': break
 
 
 if __name__ == '__main__':
-	test(insertSort, selectSortMin, selectSortMax)
+	test(bubbleSort, insertSort, selectSortMin, selectSortMax)
