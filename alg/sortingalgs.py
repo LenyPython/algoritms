@@ -54,11 +54,11 @@ def mergeSort(arr):
 		if m1[i] <= m2[j]:
 			arr[k] = m1[i]
 			i += 1
-			k += 1
 		else:
 			arr[k] = m2[j]
 			k += 1
-			j += 1
+		j += 1
+
 	while i < len(m1):
 		arr[k] = m1[i]
 		i += 1
