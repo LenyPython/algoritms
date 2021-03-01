@@ -41,4 +41,34 @@ def bubbleSort(arr):
 	return arr
 
 # merge sort
+def mergeSort(arr):
+	n = len(arr) // 2
+	if not n: return arr
+
+	m1 = mergeSort(arr[:n])
+	m2 = mergeSort(arr[n:])
+	# merge part
+	i, j, k  = 0, 0, 0
+
+	while i < len(m1) and j < len(m2):
+		if m1[i] <= m2[j]:
+			arr[k] = m1[i]
+			i += 1
+			k += 1
+		else:
+			arr[k] = m2[j]
+			k += 1
+			j += 1
+	while i < len(m1):
+		arr[k] = m1[i]
+		i += 1
+		k += 1
+	while j < len(m2):
+		arr[k] = m2[j]
+		j += 1
+		k += 1
+	return arr
+
+
+
 
