@@ -18,4 +18,5 @@ def main():
 
 
 if __name__ == '__main__':
-	test(mergeSort, bubbleSort, insertSort, selectSortMin, selectSortMax)
+	# test(mergeSort, bubbleSort, insertSort, selectSortMin, selectSortMax)
+	test(quickSort)

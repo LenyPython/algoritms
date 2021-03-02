@@ -65,6 +65,17 @@ def mergeSort(arr):
 		k += 1
 	return arr
 
+# quick sort
+def quickSort(arr):
+	n = len(arr)
+	if n <= 2: return arr
+
+	left, right = [], []
+	for x in range(1, len(arr)):
+		if x < arr[0]: left.append(x)
+		else: right.append(x)
+	return quickSort(left) + arr[0:1] + quickSort(right)
+
 
 
 
