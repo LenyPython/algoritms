@@ -48,24 +48,20 @@ def mergeSort(arr):
 	m1 = mergeSort(arr[:n])
 	m2 = mergeSort(arr[n:])
 	# merge part
-	i, j, k  = 0, 0, 0
+	k  = 0
 
-	while i < len(m1) and j < len(m2):
-		if m1[i] <= m2[j]:
-			arr[k] = m1[i]
-			i += 1
+	while m1 and m2:
+		if m1[0] <= m2[0]:
+			arr[k] = m1.pop(0)
 		else:
-			arr[k] = m2[j]
-			k += 1
-		j += 1
-
-	while i < len(m1):
-		arr[k] = m1[i]
-		i += 1
+			arr[k] = m2.pop(0)
 		k += 1
-	while j < len(m2):
-		arr[k] = m2[j]
-		j += 1
+
+	while m1:
+		arr[k] = m1.pop(0)
+		k += 1
+	while m2:
+		arr[k] = m2.pop(0)
 		k += 1
 	return arr
 
