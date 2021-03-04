@@ -67,30 +67,29 @@ def mergeSort(arr):
 	return arr
 
 # quick sort
-def quickSort(arr, start, stop):
-	print(arr)
+def quickSort(arr):
+	start, stop = 0, len(arr) - 1
+
+	def qsort(arr, start, stop):
+		if start < stop:
+			pivot = partition(arr, start, stop)
+			qsort(arr, start, pivot - 1)
+			qsort(arr, pivot + 1, stop)
+		return arr
 
 	def partition(arr, start, stop):
-		pivot = arr[randint(start, stop)]
-		arr[stop], pivot = pivot, arr[stop]
+		pivot = randint(start, stop - 1)
+		arr[stop], arr[pivot] = arr[pivot], arr[stop]
 		pI = start - 1
 		for i in range(start, stop):
-			if arr[i] <= pivot:
-				arr[i], arr[pI] = arr[pI], arr[i]
+			if arr[i] <= arr[stop]:
 				pI += 1
+				arr[i], arr[pI] = arr[pI], arr[i]
 		arr[pI + 1], arr[stop] = arr[stop], arr[pI + 1]
-		return pI
+		return pI + 1
+	
+	return qsort(arr, start, stop)
 
-	if start < stop:
-		pivot = partition(arr, start, stop)
-		quickSort(arr, start, pivot)
-		quickSort(arr, pivot + 1, stop)
-	print(arr)
-	return arr
-
-arr = [randint(1,20) for _ in range(10)]
-
-quickSort(arr, 0, len(arr) - 1)
 
 
 
