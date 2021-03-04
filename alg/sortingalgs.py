@@ -67,14 +67,24 @@ def mergeSort(arr):
 
 # quick sort
 def quickSort(arr):
-	n = len(arr)
-	if n <= 2: return arr
+	start = 0
+	stop = len(arr)
+	def partition(arr):
+		pivot = arr[-1]
+		pI = 0
+		for value in arr[:-1]:
+			if value <= pivot:
+				value, arr[pI] = arr[pI], value
+				pI += 1
+			print(f'pI: {pI}, len: {len(arr)}')
+		pivot, arr[pI] = arr[pI], pivot
+		return pI
 
-	left, right = [], []
-	for x in range(1, len(arr)):
-		if x < arr[0]: left.append(x)
-		else: right.append(x)
-	return quickSort(left) + arr[0:1] + quickSort(right)
+	if start < stop:
+		pivot = partition(arr[start:stop])
+		quickSort(arr[start:pivot])
+		quickSort(arr[pivot:stop])
+	return arr
 
 
 

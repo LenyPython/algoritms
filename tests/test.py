@@ -11,8 +11,8 @@ def test(*args):
 	TESTS = {
 			'tiny': [randint(0,19) for _ in range(10)],
 			'small': [randint(0, 200) for _ in range(100)],
-			'medium': [randint(0,10000) for _ in range(5000)],
-			'big': [randint(0,10000) for _ in range(10000)]
+			#'medium': [randint(0,10000) for _ in range(5000)],
+			#'big': [randint(0,10000) for _ in range(10000)]
 			}
 	for func in args:
 		print(f'Running tests for: {func.__name__}\n')
