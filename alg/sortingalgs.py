@@ -1,3 +1,4 @@
+from random import randint
 
 #select sort
 def selectSortMin(arr):
@@ -66,26 +67,30 @@ def mergeSort(arr):
 	return arr
 
 # quick sort
-def quickSort(arr):
-	start = 0
-	stop = len(arr)
-	def partition(arr):
-		pivot = arr[-1]
-		pI = 0
-		for value in arr[:-1]:
-			if value <= pivot:
-				value, arr[pI] = arr[pI], value
+def quickSort(arr, start, stop):
+	print(arr)
+
+	def partition(arr, start, stop):
+		pivot = arr[randint(start, stop)]
+		arr[stop], pivot = pivot, arr[stop]
+		pI = start - 1
+		for i in range(start, stop):
+			if arr[i] <= pivot:
+				arr[i], arr[pI] = arr[pI], arr[i]
 				pI += 1
-			print(f'pI: {pI}, len: {len(arr)}')
-		pivot, arr[pI] = arr[pI], pivot
+		arr[pI + 1], arr[stop] = arr[stop], arr[pI + 1]
 		return pI
 
 	if start < stop:
-		pivot = partition(arr[start:stop])
-		quickSort(arr[start:pivot])
-		quickSort(arr[pivot:stop])
+		pivot = partition(arr, start, stop)
+		quickSort(arr, start, pivot)
+		quickSort(arr, pivot + 1, stop)
+	print(arr)
 	return arr
 
+arr = [randint(1,20) for _ in range(10)]
+
+quickSort(arr, 0, len(arr) - 1)
 
 
 
