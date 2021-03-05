@@ -1,4 +1,14 @@
 from random import randint
+from time import time
+
+def timeMeasuer(func):
+	def wrapper(func):
+		start = time()
+		func()
+		stop = time()
+		print(f'Time elapsed: {start - stop}')
+	
+	return wrapper
 
 #select sort
 def selectSortMin(arr):
