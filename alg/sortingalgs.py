@@ -62,8 +62,8 @@ def mergeSort(arr):
 		n = len(arr) // 2
 		if not n: return arr
 
-		m1 = mergeSort(arr[:n])
-		m2 = mergeSort(arr[n:])
+		m1 = msort(arr[:n])
+		m2 = msort(arr[n:])
 		# merge part
 		k  = 0
 
