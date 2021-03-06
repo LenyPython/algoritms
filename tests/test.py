@@ -21,7 +21,8 @@ def test(*args):
 			# sortedArray is a dictionary with sorted arr and time
 			# keys ar result -> sorted array, time -> time elapsed
 			result = checkIfSorted(sortedArray['result'])
-			print(f'Test case {key} is sorted: {result}, in time: {sortedArray["time"]}')
+			time = sortedArray['time']
+			print(f'Test case {key} is sorted: {result}, in time: {time}')
 		print('...................................\n')
 		
 
