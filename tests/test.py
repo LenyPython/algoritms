@@ -17,9 +17,12 @@ def test(*args):
 	for func in args:
 		print(f'Running tests for: {func.__name__}\n')
 		for key, case in TESTS.items():
+			print(f'Test case: {key}')
 			sortedArray = func(case)
-			result = checkIfSorted(sortedArray)
-			print(f'Test case: {key}, result: {result}')
+			# sortedArray is a dictionary with sorted arr and time
+			# keys ar result -> sorted array, time -> time elapsed
+			result = checkIfSorted(sortedArray['result'])
+			print(f'Is sorted: {result}, in time: {sortedArray["time"]}')
 		print('...................................\n')
 		
 

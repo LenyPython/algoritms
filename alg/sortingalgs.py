@@ -1,16 +1,17 @@
 from random import randint
 from time import time
 
-def timeMeasuer(func):
-	def wrapper(func):
+def timeMeasure(func):
+	def wrapper(arr):
 		start = time()
-		func()
+		result = func(arr)
 		stop = time()
-		print(f'Time elapsed: {start - stop}')
-	
+		return {'result':result, 'time': stop - start}
+	wrapper.__name__ = func.__name__	
 	return wrapper
 
 #select sort
+@timeMeasure
 def selectSortMin(arr):
 	for i in range(len(arr) - 1):
 		m = min(arr[i:])
@@ -19,6 +20,7 @@ def selectSortMin(arr):
 		arr[i] = m	
 	return arr
 
+@timeMeasure
 def selectSortMax(arr):
 	for i in range(-1, -len(arr), -1):
 		m = max(arr[:i])
@@ -29,6 +31,7 @@ def selectSortMax(arr):
 	return arr
 
 # insert sort
+@timeMeasure
 def insertSort(arr):
 	for i,v in enumerate(arr):
 		if i + 1 < len(arr):
@@ -40,6 +43,7 @@ def insertSort(arr):
 	return arr
 
 # bubble sort
+@timeMeasure
 def bubbleSort(arr):
 	n = len(arr)
 	for i in range(n):
@@ -52,31 +56,36 @@ def bubbleSort(arr):
 	return arr
 
 # merge sort
+@timeMeasure
 def mergeSort(arr):
-	n = len(arr) // 2
-	if not n: return arr
+	def msort(arr):
+		n = len(arr) // 2
+		if not n: return arr
 
-	m1 = mergeSort(arr[:n])
-	m2 = mergeSort(arr[n:])
-	# merge part
-	k  = 0
+		m1 = mergeSort(arr[:n])
+		m2 = mergeSort(arr[n:])
+		# merge part
+		k  = 0
 
-	while m1 and m2:
-		if m1[0] <= m2[0]:
+		while m1 and m2:
+			if m1[0] <= m2[0]:
+				arr[k] = m1.pop(0)
+			else:
+				arr[k] = m2.pop(0)
+			k += 1
+
+		while m1:
 			arr[k] = m1.pop(0)
-		else:
+			k += 1
+		while m2:
 			arr[k] = m2.pop(0)
-		k += 1
-
-	while m1:
-		arr[k] = m1.pop(0)
-		k += 1
-	while m2:
-		arr[k] = m2.pop(0)
-		k += 1
-	return arr
+			k += 1
+		return arr
+	ans = msort(arr)
+	return ans
 
 # quick sort
+@timeMeasure
 def quickSort(arr):
 	start, stop = 0, len(arr) - 1
 
@@ -97,8 +106,8 @@ def quickSort(arr):
 				arr[i], arr[pI] = arr[pI], arr[i]
 		arr[pI + 1], arr[stop] = arr[stop], arr[pI + 1]
 		return pI + 1
-	
-	return qsort(arr, start, stop)
+	arr = qsort(arr, start, stop)
+	return arr
 
 
 
