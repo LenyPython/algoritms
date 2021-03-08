@@ -1,5 +1,4 @@
 from random import randint
-# test cases
 
 #check if the array is sorted
 def checkIfSorted(arr):
@@ -22,7 +21,7 @@ def test(*args):
 			# keys ar result -> sorted array, time -> time elapsed
 			result = checkIfSorted(sortedArray['result'])
 			time = sortedArray['time']
-			print(f'Test case {key} is sorted: {result}, in time: {time}')
+			print(f'Test case {key} is sorted: {result}, in: {time:.6f} sec')
 		print('...................................\n')
 		
 

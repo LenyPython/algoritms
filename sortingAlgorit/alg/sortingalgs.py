@@ -1,11 +1,11 @@
 from random import randint
-from time import time
+import time
 
 def timeMeasure(func):
 	def wrapper(arr):
-		start = time()
+		start = time.perf_counter()
 		result = func(arr)
-		stop = time()
+		stop = time.perf_counter()
 		return {'result':result, 'time': stop - start}
 	wrapper.__name__ = func.__name__	
 	return wrapper
