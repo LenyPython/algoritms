@@ -1,6 +1,7 @@
 from random import randint
 import time
 
+
 def timeMeasure(func):
 	def wrapper(arr):
 		start = time.perf_counter()
