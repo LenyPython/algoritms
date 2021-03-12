@@ -2,12 +2,18 @@ from generator.generator import generateMaze
 from pathfinder.findpaths import findPaths
 
 
-def backtrack(maze, i, j, n):
+def backtrack(maze, i, j, n, goDown = True):
 	if i == n and j == n: return True
-
 	if i <= n and j <= n:
 		if maze[i][j]:
-			return True if backtrack(maze, i + 1, j, n) or backtrack(maze, i, j + 1, n) else False
+			down, top = False, False
+			if goDown:
+				down = backtrack(maze, i + 1, j, n)
+			right = backtrack(maze, i, j + 1, n)
+			if i > 0 and j > 1:
+				if not maze[i - 1][j - 1]:
+					top = backtrack(maze, i - 1, j, n, False)
+			return True if down or right or top else False
 
 def userInput():
 	n = ''
