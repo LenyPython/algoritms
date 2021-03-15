@@ -1,19 +1,26 @@
 from generator.generator import generateMaze
 from pathfinder.findpaths import findPaths
+import numpy as np
 
 
-def backtrack(maze, i, j, n, goDown = True):
+def backtrack(maze, n, i = 0, j = 0, goDown = True, goRight = True):
 	if i == n and j == n: return True
 	if i <= n and j <= n:
 		if maze[i][j]:
-			down, top = False, False
+			print([i, j], maze[i][j])
+			up, down, left, right = False, False, False, False
 			if goDown:
 				down = backtrack(maze, i + 1, j, n)
-			right = backtrack(maze, i, j + 1, n)
+			if goRight:
+				right = backtrack(maze, i, j + 1, n)
 			if i > 0 and j > 1:
 				if not maze[i - 1][j - 1]:
-					top = backtrack(maze, i - 1, j, n, False)
-			return True if down or right or top else False
+					up = backtrack(maze, i - 1, j, n, False, True)
+			############# debug
+			if i > 1 and j > 0:
+				if not maze[i - 1][j - 1] or not maze[i][j - 1]:
+					left = backtrack(maze, i, j - 1, n, True, False)
+			return True if any([up, down, left, right]) else False
 
 def userInput():
 	n = ''
@@ -29,13 +36,22 @@ def userInput():
 def main():
 	n = userInput()
 	arrLen = n - 1
-	mainMaze = generateMaze(n)
+	#mainMaze = generateMaze(n)
+	mainMaze = np.array(
+				[[1,1,0,1,1,1],
+				[0,1,1,1,0,1],
+				[0,0,0,0,1,1],
+				[0,1,1,1,1,0],
+				[0,1,0,0,0,0],
+				[0,1,1,1,1,1]]
+				)
+				
 	print(mainMaze)
-	print(f'Has a solution: {backtrack(mainMaze, 0, 0, arrLen)}')
-	while not backtrack(mainMaze, 0, 0, arrLen):
-		mainMaze =generateMaze(n)
-		print(mainMaze)
-		print(f'Has a solution: {backtrack(mainMaze, 0, 0, arrLen)}')
+	print(f'Has a solution: {backtrack(mainMaze, arrLen)}')
+#	while not backtrack(mainMaze, arrLen):
+#		mainMaze =generateMaze(n)
+#		print(mainMaze)
+#		print(f'Has a solution: {backtrack(mainMaze, arrLen)}')
 
 
 if __name__ == '__main__':
