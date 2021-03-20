@@ -8,12 +8,13 @@ def userInput():
 		print('Which test would you like to run? ')
 		case = input('1. tiny 2. small 3. medium 4. big a. all ')
 		repeat = int(input('How many repeats? '))
+
 		if algorithm == 'all' or algorithm == 'ALL':
 			algorithm = ['1', '2', '3', '4', '5', '6']
 		else:
 			algorithm = [size for size in algorithm if size.isdigit()]
 
-		if case == 'all':
+		if case == 'all' or case == 'ALL':
 			case = ['1', '2', '3', '4']
 		else:
 			case = [size for size in case if size.isdigit()]
@@ -23,7 +24,7 @@ def userInput():
 def main():
 	run = True
 	while run:
-		print('Sorting algoritm tester')
+		print('\nSorting algoritm tester')
 		choice = userInput()
 		
 		# run test function with chosen allgorithms
