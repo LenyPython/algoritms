@@ -10,7 +10,7 @@ def createTest(size):
 	return [randint(0,size) for _ in range(size)]
 
 # test function
-def test(size, repeat, *args):
+def test(size, repeat, tests):
 	#	testcase = input('Choose test size: 0, 1, 2, 3')
 	TESTS = {
 			'1': createTest(10),
@@ -28,18 +28,21 @@ def test(size, repeat, *args):
 			'6':selectSortMax
 			}
 	
-	for key in args:
+	for key in tests:
 		for s in size:
+			overalTime = 0
 			for time in range(1, repeat + 1):
-				print(f'Running tests for: {sortingAlgorithms[key].__name__}. Test no. {time}\n')
+				print(f'Running tests for: {sortingAlgorithms[key].__name__}. Test no. {time}')
 				sortedArray = sortingAlgorithms[key](TESTS[s])
 				# sortedArray is a dictionary with sorted arr and time
 				# keys are result -> sorted array, time -> time elapsed
 				result = checkIfSorted(sortedArray['result'])
 				#time spent on testes t
 				t = sortedArray['time']
-				print(f'Test case {size} is sorted: {result}, in: {t:.6f} sec')
-			print('...................................\n')
+				overalTime += t
+				print(f'Test case {s} is sorted: {result}, in: {t:.6f} sec')
+
+			print(f'\n.............. Overal time pent: {overalTime:.6f} ...................\n')
 		
 
 

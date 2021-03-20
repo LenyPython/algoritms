@@ -1,12 +1,12 @@
 from tests.test import test, checkIfSorted
 
 def userInput():
-		algorithm = input('Choose a sorting algoritm/s: \n \
-				1.quickSort 2.mergeSort 3.bubbleSort\n \
-				4.insertSort 5.selectSortMin 6.selectSortMax\n \
-				ALL for all' )
-		case = input('which test would you like to run?\n \
-			1. tiny 2. small 3. medium 4. big a. all )')
+		print('Choose a sorting algoritm/s: ')
+		print('1.quickSort 2.mergeSort 3.bubbleSort ')
+		print('4.insertSort 5.selectSortMin 6.selectSortMax ')
+		algorithm = input('ALL for all ')
+		print('Which test would you like to run? ')
+		case = input('1. tiny 2. small 3. medium 4. big a. all ')
 		repeat = int(input('How many repeats? '))
 		if algorithm == 'all' or algorithm == 'ALL':
 			algorithm = ['1', '2', '3', '4', '5', '6']
@@ -30,9 +30,9 @@ def main():
 		# takes list size, times of repeat and choosen algorithms and *args
 		test(choice['size'], choice['times'], choice['alg'])
 
-		cont = input('Would you like to take another test? y/n')
+		cont = input('Would you like to take another test? y/n ')
 		while cont != 'y' and cont != 'n':
-			cont = input('Wrong input, run? y/n')
+			cont = input('Wrong input, run another test? y/n ')
 		if cont == 'n': break
 
 
