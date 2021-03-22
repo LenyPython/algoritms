@@ -6,7 +6,7 @@ def userInput():
 		print('4.insertSort 5.selectSortMin 6.selectSortMax ')
 		algorithm = input('ALL for all ')
 		print('Which test would you like to run? ')
-		case = input('1. tiny 2. small 3. medium 4. big a. all ')
+		case = input('1.tiny 2.small 3.medium 4.big a.all ')
 		repeat = int(input('How many repeats? '))
 
 		if algorithm == 'all' or algorithm == 'ALL':
@@ -14,7 +14,7 @@ def userInput():
 		else:
 			algorithm = [size for size in algorithm if size.isdigit()]
 
-		if case == 'all' or case == 'ALL':
+		if case == 'all' or case == 'ALL' or case == 'a':
 			case = ['1', '2', '3', '4']
 		else:
 			case = [size for size in case if size.isdigit()]
@@ -31,7 +31,7 @@ def main():
 		# takes list size, times of repeat and choosen algorithms and *args
 		test(choice['size'], choice['times'], choice['alg'])
 
-		cont = input('Would you like to take another test? y/n')
+		cont = input('Would you like to take another test? y/n ')
 		while cont != 'y' and cont != 'n':
 			cont = input('Wrong input, run? y/n ')
 		if cont == 'n': break

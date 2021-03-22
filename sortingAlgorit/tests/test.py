@@ -11,7 +11,6 @@ def createTest(size):
 
 # test function
 def test(size, repeat, tests):
-	#	testcase = input('Choose test size: 0, 1, 2, 3')
 	TESTS = {
 			'1': 10,
 			'2': 100,
@@ -31,8 +30,8 @@ def test(size, repeat, tests):
 	for key in tests:
 		for s in size:
 			overalTime = 0
+			print(f'\t\tRunning tests for: {sortingAlgorithms[key].__name__}.')
 			for time in range(1, repeat + 1):
-				print(f'Running tests for: {sortingAlgorithms[key].__name__}. Test no. {time}')
 				sortedArray = sortingAlgorithms[key](createTest(TESTS[s]))
 				# sortedArray is a dictionary with sorted arr and time
 				# keys are result -> sorted array, time -> time elapsed
@@ -40,9 +39,9 @@ def test(size, repeat, tests):
 				#time spent on testes t
 				t = sortedArray['time']
 				overalTime += t
-				print(f'Test case {s} is sorted: {result}, in: {t:.6f} sec')
+				print(f'>>> Test no. {time} size: {TESTS[s]} is sorted: {result}, in: {t:.6f} sec')
 
-			print(f'\n.............. Overal time pent: {overalTime:.6f} ...................\n')
+			print(f'\n................... Overal time spent: {overalTime:.6f} ....................\n')
 		
 
 
