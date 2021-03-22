@@ -31,13 +31,10 @@ def main():
 		# takes list size, times of repeat and choosen algorithms and *args
 		test(choice['size'], choice['times'], choice['alg'])
 
-		try:
-			cont = input('Would you like to take another test? y/n ')
-			if cont != 'y' and cont != 'n':
-				raise ValueError
-		except ValueError:
-			print('!!!Wrong Input!!!')
-
+		cont = input('Would you like to take another test? y/n')
+		while cont != 'y' and cont != 'n':
+			cont = input('Wrong input, run? y/n ')
+		if cont == 'n': break
 
 if __name__ == '__main__':
 

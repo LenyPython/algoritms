@@ -13,10 +13,10 @@ def createTest(size):
 def test(size, repeat, tests):
 	#	testcase = input('Choose test size: 0, 1, 2, 3')
 	TESTS = {
-			'1': createTest(10),
-			'2': createTest(100),
-			'3': createTest(1000),
-			'4': createTest(10000)
+			'1': 10,
+			'2': 100,
+			'3': 1000,
+			'4': 10000
 			}
 
 	sortingAlgorithms = {
@@ -33,7 +33,7 @@ def test(size, repeat, tests):
 			overalTime = 0
 			for time in range(1, repeat + 1):
 				print(f'Running tests for: {sortingAlgorithms[key].__name__}. Test no. {time}')
-				sortedArray = sortingAlgorithms[key](TESTS[s])
+				sortedArray = sortingAlgorithms[key](createTest(TESTS[s]))
 				# sortedArray is a dictionary with sorted arr and time
 				# keys are result -> sorted array, time -> time elapsed
 				result = checkIfSorted(sortedArray['result'])
