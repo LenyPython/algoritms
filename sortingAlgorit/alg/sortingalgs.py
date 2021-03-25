@@ -1,14 +1,15 @@
 from random import randint
+import functools
 import time
 
 
 def timeMeasure(func):
+	@functools.wraps(func)
 	def wrapper(arr):
 		start = time.perf_counter()
 		result = func(arr)
 		stop = time.perf_counter()
 		return {'result':result, 'time': stop - start}
-	wrapper.__name__ = func.__name__	
 	return wrapper
 
 #select sort
