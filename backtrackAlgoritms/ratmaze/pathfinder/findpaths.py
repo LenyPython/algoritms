@@ -1,3 +1,13 @@
+import numpy as np
+
+def show_paths(solutions):
+	for i, solution in enumerate(solutions):
+		size = solution[-1][-1] + 1
+		arr = np.zeros((size, size))
+		for row, col in solution:
+			arr[row][col] = 1
+		print(arr)
+		print(f'Path no. {i + 1}: {solution}')
 
 
 def find_paths(maze, size, pos_x = 0, pos_y = 0, came_from=None, paths = [], way = []):
